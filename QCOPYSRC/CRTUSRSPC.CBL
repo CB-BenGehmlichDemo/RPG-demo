@@ -1,9 +1,4 @@
-       //***********************************************************************
-       // Prototype for the QUSCRTUS API.
-       //
-       // @link https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_71/apis/quscrtus.htm
-       // @author Edoardo Luppi
-       //***********************************************************************
+    
        dcl-pr createUserSpace extpgm('QUSCRTUS');
          qualifiedUserSpaceName char(20) const;
          extendedAttribute char(10) const;
