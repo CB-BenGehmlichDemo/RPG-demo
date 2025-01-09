@@ -1,9 +1,3 @@
-       //***********************************************************************
-       // Prototype for the QDBRTVFD API.
-       //
-       // @link https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_71/apis/qdbrtvfd.htm
-       // @author Edoardo Luppi
-       //***********************************************************************
        dcl-pr getDatabaseFileDescription extpgm('QDBRTVFD');
          receiver char(32767) options(*varsize);
          receiverLength int(10) const;
