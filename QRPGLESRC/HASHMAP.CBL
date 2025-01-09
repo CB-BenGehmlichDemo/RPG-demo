@@ -1,29 +1,4 @@
-       //***********************************************************************
-       // MIT License
-       //
-       // Copyright (c) 2017 Edoardo Luppi
-       //
-       // Permission is hereby granted, free of charge, to any person obtaining a copy
-       // of this software and associated documentation files (the "Software"), to deal
-       // in the Software without restriction, including without limitation the rights
-       // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-       // copies of the Software, and to permit persons to whom the Software is
-       // furnished to do so, subject to the following conditions:
-       //
-       // The above copyright notice and this permission notice shall be included in all
-       // copies or substantial portions of the Software.
-       //
-       // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-       // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-       // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-       // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-       // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-       // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-       // SOFTWARE.
-       //
-       // @author Edoardo Luppi
-       // @description RPG implementation of an HashMap
-       //***********************************************************************
+      
        ctl-opt nomain option(*srcstmt) bnddir('QC2LE':'UTILS');
 
        dcl-c HASHMAP_SIZE %size(hashMapTpl);
@@ -57,9 +32,7 @@
          *n char(9);
        end-ds;
 
-       //***********************************************************************
-       // hashMapNew
-       //***********************************************************************
+
        dcl-proc hashMapNew export;
 
          dcl-pi *n pointer;
@@ -93,9 +66,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapDispose
-       //***********************************************************************
+   
        dcl-proc hashMapDispose export;
 
          dcl-pi *n;
@@ -111,9 +82,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapClear
-       //***********************************************************************
+  
        dcl-proc hashMapClear export;
 
          dcl-pi *n;
@@ -145,9 +114,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapSize
-       //***********************************************************************
+   
        dcl-proc hashMapSize export;
 
          dcl-pi *n uns(10);
@@ -160,9 +127,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapPut
-       //***********************************************************************
+  
        dcl-proc hashMapPut export;
 
          dcl-pi *n;
@@ -189,9 +154,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapPutSS
-       //***********************************************************************
+   
        dcl-proc hashMapPutSS export;
 
          dcl-pi *n;
@@ -208,9 +171,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapPutNN
-       //***********************************************************************
+     
        dcl-proc hashMapPutNN export;
 
          dcl-pi *n;
@@ -227,9 +188,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapGet
-       //***********************************************************************
+   
        dcl-proc hashMapGet export;
 
          dcl-pi *n pointer;
@@ -251,9 +210,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapGetSS
-       //***********************************************************************
+    
        dcl-proc hashMapGetSS export;
 
          dcl-pi *n varchar(32767);
@@ -270,9 +227,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapGetNN
-       //***********************************************************************
+    
        dcl-proc hashMapGetNN export;
 
          dcl-pi *n packed(22:7);
@@ -294,9 +249,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapContainsKey
-       //***********************************************************************
        dcl-proc hashMapContainsKey export;
 
          dcl-pi *n ind;
@@ -309,9 +261,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapContainsValue
-       //***********************************************************************
        dcl-proc hashMapContainsValue export;
 
          dcl-pi *n ind;
@@ -344,9 +293,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapRemove
-       //***********************************************************************
        dcl-proc hashMapRemove export;
 
          dcl-pi *n;
@@ -384,9 +330,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashMapGetEntry
-       //***********************************************************************
        dcl-proc hashMapGetEntry;
 
          dcl-pi *n pointer;
@@ -420,9 +363,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // getHashCode
-       //***********************************************************************
        dcl-proc getHashCode;
 
          dcl-pi *n zoned(63);
@@ -512,9 +452,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // getBucketIndex
-       //***********************************************************************
        dcl-proc getBucketIndex;
 
          dcl-pi *n uns(10);
@@ -534,9 +471,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // getBucket
-       //***********************************************************************
        dcl-proc getBucket;
 
          dcl-pi *n pointer;
@@ -548,9 +482,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // getNearestExpOf2
-       //***********************************************************************
        dcl-proc getNearestExpOf2;
 
          dcl-pi *n uns(10);
@@ -567,9 +498,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // disposeEntry
-       //***********************************************************************
        dcl-proc disposeEntry;
 
          dcl-pi *n;
@@ -584,9 +512,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // ensureCapacity
-       //***********************************************************************
        dcl-proc ensureCapacity;
 
          dcl-pi *n;
@@ -605,9 +530,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // addEntry
-       //***********************************************************************
        dcl-proc addEntry;
 
          dcl-pi *n;
@@ -635,11 +557,10 @@
            allocSpace(entryPtr:ENTRY_SIZE);
            bucket.entryPtr = entryPtr;
          else;
-           // Bucket gia' in uso.
-           // Ciclo la lista di elementi gia' presenti, per cercare una eventuale corrispondenza.
+           
            dow (entryPtr <> *null);
              if (entry.hashCode = hashCode);
-               // Elemento gia' presente in questo bucket. Sovrascrivo il valore.
+               
                allocSpace(entry.valuePtr:valueSize);
                memcpy(entry.valuePtr:valuePtr:valueSize);
                entry.valueSize = valueSize;
@@ -653,8 +574,7 @@
              entryPtr = entry.nextEntryPtr;
            enddo;
 
-           // Elemento non presente nel bucket. Lo aggiungo in testa.
-           // Copio il vecchio elemento iniziale, per poi referenziarlo come elemento successivo.
+           
            allocSpace(oldEntryPtr:ENTRY_SIZE);
            memcpy(oldEntryPtr:entryPtr:ENTRY_SIZE);
            entry.keyPtr = *null;
@@ -672,9 +592,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // rebuild
-       //***********************************************************************
        dcl-proc rebuild;
 
          dcl-pi *n;
@@ -689,7 +606,7 @@
          dcl-s entryPtr pointer inz(*null);
          dcl-s i uns(10) inz;
 
-         // Alloco un nuovo spazio dove sistemare gli elementi.
+       
          allocSpace(newBucketsPtr:BUCKET_SIZE * hashMap.allocatedSize);
 
          for i = 1 to %int(hashMap.allocatedSize / 2);
