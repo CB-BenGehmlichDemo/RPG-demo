@@ -1,9 +1,4 @@
-       //***********************************************************************
-       // Prototype for the QUSROBJD API.
-       //
-       // @link https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_71/apis/qusrobjd.htm
-       // @author Edoardo Luppi
-       //***********************************************************************
+
        dcl-pr getObjectDescription extpgm('QUSROBJD');
          receiver char(32767) options(*varsize);
          receiverLength int(10) const;
