@@ -1,32 +1,4 @@
-       //***********************************************************************
-       // MIT License
-       //
-       // Copyright (c) 2017 Edoardo Luppi
-       //
-       // Permission is hereby granted, free of charge, to any person obtaining a copy
-       // of this software and associated documentation files (the "Software"), to deal
-       // in the Software without restriction, including without limitation the rights
-       // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-       // copies of the Software, and to permit persons to whom the Software is
-       // furnished to do so, subject to the following conditions:
-       //
-       // The above copyright notice and this permission notice shall be included in all
-       // copies or substantial portions of the Software.
-       //
-       // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-       // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-       // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-       // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-       // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-       // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-       // SOFTWARE.
-       //
-       // Original idea by Mihael Schmidt.
-       // https://github.com/OSSILE
-       //
-       // @author Edoardo Luppi
-       // @description RPG implementation of a LinkedList
-       //***********************************************************************
+
        ctl-opt nomain option(*srcstmt) bnddir('QC2LE':'UTILS');
 
        dcl-c LIST_SIZE %size(listTpl);
@@ -50,9 +22,6 @@
          nextNodePtr pointer;
        end-ds;
 
-       //***********************************************************************
-       // listNew
-       //***********************************************************************
        dcl-proc listNew export;
 
          dcl-pi *n pointer end-pi;
@@ -71,9 +40,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listDispose
-       //***********************************************************************
        dcl-proc listDispose export;
 
          dcl-pi *n;
@@ -87,9 +53,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listClear
-       //***********************************************************************
        dcl-proc listClear export;
 
          dcl-pi *n;
@@ -120,9 +83,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listSize;
-       //***********************************************************************
        dcl-proc listSize export;
 
          dcl-pi *n uns(10);
@@ -135,9 +95,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listIsEmpty
-       //***********************************************************************
        dcl-proc listIsEmpty export;
 
          dcl-pi *n ind;
@@ -148,9 +105,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listAdd
-       //***********************************************************************
        dcl-proc listAdd export;
 
          dcl-pi *n;
@@ -175,14 +129,13 @@
            index_ = list.size + 1;
          endif;
 
-         // Costruisco il nuovo nodo.
+        
          allocSpace(newNodePtr:NODE_SIZE);
          allocSpace(newNode.objectPtr:objectSize);
          memcpy(newNode.objectPtr:objectPtr:objectSize);
          newNode.objectSize = objectSize;
 
-         // Reperisco il nodo gia' presente in questa posizione, il quale
-         // poi diventera' il nodo successivo.
+        
          nextNodePtr = getNode(listPtr:index_);
 
          if (index_ = 1);
@@ -190,14 +143,13 @@
          endif;
 
          if (nextNodePtr <> *null);
-           // La posizione e' gia' occupata. Aggiorno i riferimenti tra i nodi.
-           // Nuovo nodo.
+       
            newNode.nextNodePtr = nextNodePtr;
            newNode.previousNodePtr = nextNode.previousNodePtr;
            previousNodePtr = nextNode.previousNodePtr;
            nextNode.previousNodePtr = newNodePtr;
          else;
-           // Sto aggiungendo il nodo alla fine (che puo' essere anche l'inizio) della lista.
+          
            newNode.previousNodePtr = list.lastNodePtr;
            previousNodePtr = list.lastNodePtr;
            list.lastNodePtr = newNodePtr;
@@ -211,9 +163,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listAddNumber
-       //***********************************************************************
        dcl-proc listAddNumber export;
 
          dcl-pi *n;
@@ -230,9 +179,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listAddString
-       //***********************************************************************
        dcl-proc listAddString export;
 
          dcl-pi *n;
@@ -249,9 +195,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listGet
-       //***********************************************************************
        dcl-proc listGet export;
 
          dcl-pi *n pointer;
@@ -268,9 +211,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listGetNumber
-       //***********************************************************************
        dcl-proc listGetNumber export;
 
          dcl-pi *n packed(22:7);
@@ -288,9 +228,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listGetString
-       //***********************************************************************
        dcl-proc listGetString export;
 
          dcl-pi *n varchar(32767);
@@ -307,9 +244,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listSet
-       //***********************************************************************
        dcl-proc listSet export;
 
          dcl-pi *n;
@@ -329,9 +263,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listSetNumber
-       //***********************************************************************
        dcl-proc listSetNumber export;
 
          dcl-pi *n;
@@ -344,9 +275,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listSetString
-       //***********************************************************************
        dcl-proc listSetString export;
 
          dcl-pi *n;
@@ -359,9 +287,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listRemove
-       //***********************************************************************
        dcl-proc listRemove export;
 
          dcl-pi *n;
@@ -384,14 +309,14 @@
          if (nextNodePtr <> *null);
            nextNode.previousNodePtr = previousNodePtr;
          else;
-           // Era l'ultimo nodo della lista.
+       
            list.lastNodePtr = previousNodePtr;
          endif;
 
          if (previousNodePtr <> *null);
            previousNode.nextNodePtr = nextNodePtr;
          else;
-           // Era il primo nodo della lista.
+           
            list.firstNodePtr = nextNodePtr;
          endif;
 
@@ -401,9 +326,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listIterNext
-       //***********************************************************************
        dcl-proc listIterNext export;
 
          dcl-pi *n pointer;
@@ -424,9 +346,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listIterPrevious
-       //***********************************************************************
        dcl-proc listIterPrevious export;
 
          dcl-pi *n pointer;
@@ -447,9 +366,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // listIterCurrentIndex
-       //***********************************************************************
        dcl-proc listIterCurrentIndex export;
 
          dcl-pi *n uns(10);
@@ -461,10 +377,6 @@
          return list.currentNodeIndex;
 
        end-proc;
-
-       //***********************************************************************
-       // listIterReset
-       //***********************************************************************
        dcl-proc listIterReset export;
 
          dcl-pi *n;
@@ -478,9 +390,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // getNode
-       //***********************************************************************
        dcl-proc getNode;
 
          dcl-pi *n pointer;
