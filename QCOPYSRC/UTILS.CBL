@@ -1,8 +1,4 @@
-       //***********************************************************************
-       // Funzioni di utilita' varia.
-       //
-       // @author Edoardo Luppi
-       //***********************************************************************
+
        dcl-pr toUppercase varchar(32767) extproc('TOUPPERCASE');
          string varchar(32767) const;
        end-pr;
