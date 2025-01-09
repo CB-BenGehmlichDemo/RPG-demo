@@ -1,9 +1,4 @@
-       //***********************************************************************
-       // Prototype for the QUSLOBJ API.
-       //
-       // @link https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_71/apis/quslobj.htm
-       // @author Edoardo Luppi
-       //***********************************************************************
+
        dcl-pr getObjectList extpgm('QUSLOBJ');
          qualifiedUserSpaceName char(20) const;
          formatName char(8) const;
