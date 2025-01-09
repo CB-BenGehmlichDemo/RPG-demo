@@ -1,29 +1,3 @@
-       //***********************************************************************
-       // MIT License
-       //
-       // Copyright (c) 2017 Edoardo Luppi
-       //
-       // Permission is hereby granted, free of charge, to any person obtaining a copy
-       // of this software and associated documentation files (the "Software"), to deal
-       // in the Software without restriction, including without limitation the rights
-       // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-       // copies of the Software, and to permit persons to whom the Software is
-       // furnished to do so, subject to the following conditions:
-       //
-       // The above copyright notice and this permission notice shall be included in all
-       // copies or substantial portions of the Software.
-       //
-       // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-       // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-       // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-       // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-       // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-       // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-       // SOFTWARE.
-       //
-       // @author Edoardo Luppi
-       // @description RPG implementation of an HashSet
-       //***********************************************************************
        ctl-opt nomain option(*srcstmt) bnddir('QC2LE':'UTILS');
 
        dcl-c HASHSET_SIZE %size(hashSetTpl);
@@ -54,9 +28,6 @@
          *n char(13);
        end-ds;
 
-       //***********************************************************************
-       // hashSetNew
-       //***********************************************************************
        dcl-proc hashSetNew export;
 
          dcl-pi *n pointer;
@@ -90,9 +61,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashSetDispose
-       //***********************************************************************
+
        dcl-proc hashSetDispose export;
 
          dcl-pi *n;
@@ -108,9 +77,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashSetClear
-       //***********************************************************************
+
        dcl-proc hashSetClear export;
 
          dcl-pi *n;
@@ -142,9 +109,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashSetSize
-       //***********************************************************************
+
        dcl-proc hashSetSize export;
 
          dcl-pi *n uns(10);
@@ -157,9 +122,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashSetContains
-       //***********************************************************************
+
        dcl-proc hashSetContains export;
 
          dcl-pi *n ind;
@@ -193,9 +156,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashSetAdd
-       //***********************************************************************
+
        dcl-proc hashSetAdd export;
 
          dcl-pi *n;
@@ -218,9 +179,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashSetAddString
-       //***********************************************************************
+
        dcl-proc hashSetAddString export;
 
          dcl-pi *n;
@@ -232,9 +191,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashSetAddNumber
-       //***********************************************************************
        dcl-proc hashSetAddNumber export;
 
          dcl-pi *n;
@@ -246,9 +202,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // hashSetRemove
-       //***********************************************************************
+
        dcl-proc hashSetRemove export;
 
          dcl-pi *n;
@@ -286,9 +240,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // getHashCode
-       //***********************************************************************
+
        dcl-proc getHashCode;
 
          dcl-pi *n zoned(63);
@@ -378,9 +330,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // getBucketIndex
-       //***********************************************************************
        dcl-proc getBucketIndex;
 
          dcl-pi *n uns(10);
@@ -400,9 +349,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // getBucket
-       //***********************************************************************
+
        dcl-proc getBucket;
 
          dcl-pi *n pointer;
@@ -414,9 +361,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // getNearestExpOf2
-       //***********************************************************************
        dcl-proc getNearestExpOf2;
 
          dcl-pi *n uns(10);
@@ -433,9 +377,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // disposeEntry
-       //***********************************************************************
+  
        dcl-proc disposeEntry;
 
          dcl-pi *n;
@@ -449,9 +391,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // ensureCapacity
-       //***********************************************************************
        dcl-proc ensureCapacity;
 
          dcl-pi *n;
@@ -470,9 +409,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // addEntry
-       //***********************************************************************
        dcl-proc addEntry;
 
          dcl-pi *n;
@@ -527,9 +463,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // rebuild
-       //***********************************************************************
+
        dcl-proc rebuild;
 
          dcl-pi *n;
