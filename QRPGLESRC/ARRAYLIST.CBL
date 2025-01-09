@@ -1,32 +1,4 @@
-       //***********************************************************************
-       // MIT License
-       //
-       // Copyright (c) 2017 Edoardo Luppi
-       //
-       // Permission is hereby granted, free of charge, to any person obtaining a copy
-       // of this software and associated documentation files (the "Software"), to deal
-       // in the Software without restriction, including without limitation the rights
-       // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-       // copies of the Software, and to permit persons to whom the Software is
-       // furnished to do so, subject to the following conditions:
-       //
-       // The above copyright notice and this permission notice shall be included in all
-       // copies or substantial portions of the Software.
-       //
-       // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-       // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-       // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-       // AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-       // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-       // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-       // SOFTWARE.
-       //
-       // Original idea by Mihael Schmidt.
-       // https://github.com/OSSILE
-       //
-       // @author Edoardo Luppi
-       // @description RPG implementation of an ArrayList
-       //***********************************************************************
+
        ctl-opt nomain option(*srcstmt) bnddir('QC2LE':'UTILS');
 
        dcl-c ARRAY_SIZE %size(arrayTpl);
@@ -52,9 +24,7 @@
          reservedForAlignment char(12);
        end-ds;
 
-       //***********************************************************************
-       // arrayNew
-       //***********************************************************************
+   
        dcl-proc arrayNew export;
 
          dcl-pi *n pointer;
@@ -80,9 +50,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayDispose
-       //***********************************************************************
+     *
        dcl-proc arrayDispose export;
 
          dcl-pi *n;
@@ -96,9 +64,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arraySort
-       //***********************************************************************
+   
        dcl-proc arraySort export;
 
          dcl-pi *n;
@@ -119,9 +85,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arraySortNumbers
-       //***********************************************************************
+    
        dcl-proc arraySortNumbers export;
 
          dcl-pi *n;
@@ -133,9 +97,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arraySortStrings
-       //***********************************************************************
+     
        dcl-proc arraySortStrings export;
 
          dcl-pi *n;
@@ -147,9 +109,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayTrimToSize
-       //***********************************************************************
+
        dcl-proc arrayTrimToSize export;
 
          dcl-pi *n;
@@ -169,9 +129,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayClear
-       //***********************************************************************
+ 
        dcl-proc arrayClear export;
 
          dcl-pi *n;
@@ -193,9 +151,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arraySize
-       //***********************************************************************
+ 
        dcl-proc arraySize export;
 
          dcl-pi *n uns(10);
@@ -208,9 +164,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayIsEmpty
-       //***********************************************************************
        dcl-proc arrayIsEmpty export;
 
          dcl-pi *n ind;
@@ -221,9 +174,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arraySet
-       //***********************************************************************
+
        dcl-proc arraySet export;
 
          dcl-pi *n;
@@ -243,9 +194,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arraySetNumber
-       //***********************************************************************
+  
        dcl-proc arraySetNumber export;
 
          dcl-pi *n;
@@ -258,9 +207,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arraySetString
-       //***********************************************************************
+  
        dcl-proc arraySetString export;
 
          dcl-pi *n;
@@ -273,9 +220,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayRemove
-       //***********************************************************************
+
        dcl-proc arrayRemove export;
 
          dcl-pi *n;
@@ -300,9 +245,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayAddAll
-       //***********************************************************************
+
        dcl-proc arrayAddAll export;
 
          dcl-pi *n;
@@ -331,9 +274,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayAdd
-       //***********************************************************************
+
        dcl-proc arrayAdd export;
 
          dcl-pi *n;
@@ -351,8 +292,7 @@
 
          newSize = array.size + 1;
 
-         // Verifico se l'array e' in grado di contenere il nuovo elemento.
-         // In caso lo ridimensiono.
+    
          ensureCapacity(arrayPtr:newSize);
 
          if (%parms > 3);
@@ -361,13 +301,11 @@
            index_ = newSize;
          endif;
 
-         // Verifico se devo inserire l'elemento nel "mezzo" dell'array, e in caso
-         // traslo gli elementi che vengono dopo.
          if (index_ < newSize);
            moveEntries(arrayPtr:index_:1);
          endif;
 
-         // Costruisco il nuovo elemento. A questo punto il dato dovrebbe essere nullo.
+       
          entryPtr = getEntry(arrayPtr:index_);
          allocSpace(entry.objectPtr:objectSize);
          memcpy(entry.objectPtr:objectPtr:objectSize);
@@ -378,9 +316,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayAddNumber
-       //***********************************************************************
+  
        dcl-proc arrayAddNumber export;
 
          dcl-pi *n;
@@ -397,9 +333,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayAddString
-       //***********************************************************************
+ 
        dcl-proc arrayAddString export;
 
          dcl-pi *n;
@@ -421,9 +355,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayGet
-       //***********************************************************************
+
        dcl-proc arrayGet export;
 
          dcl-pi *n pointer;
@@ -440,9 +372,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayGetNumber
-       //***********************************************************************
+
        dcl-proc arrayGetNumber export;
 
          dcl-pi *n packed(22:7);
@@ -459,9 +389,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // arrayGetString
-       //***********************************************************************
        dcl-proc arrayGetString export;
 
          dcl-pi *n varchar(32767);
@@ -478,9 +405,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // getEntry
-       //***********************************************************************
+
        dcl-proc getEntry;
 
          dcl-pi *n pointer;
@@ -494,9 +419,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // disposeEntryObject
-       //***********************************************************************
+    
        dcl-proc disposeEntryObject;
 
          dcl-pi *n;
@@ -515,10 +438,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // moveEntries
-       //    IMPORTANT: do not update the size of the array here!
-       //***********************************************************************
        dcl-proc moveEntries;
 
          dcl-pi *n;
@@ -535,38 +454,34 @@
          dcl-s bytesToCopy uns(10) inz;
          dcl-s i uns(10) inz;
 
-         // Calcolo l'indice di destinazione;
+     
          destinationIndex = startIndex + positions;
 
          select;
            when (positions < 0);
-             // Sto rimuovendo elementi.
-             // Dealloco gli oggetti che non servono piu'.
+       
              for i = destinationIndex to startIndex - 1;
                disposeEntryObject(arrayPtr:i);
              endfor;
 
              if (startIndex > array.size);
-               // Ho gia' deallocato tutto e dato che sono gli elementi terminanti dell'array
-               // quelli con cui ho lavorato, non devo fare altro.
+               
                return;
              else;
-               // Elimino (sovrascrivo) elementi all'interno dell'array.
+             
                exsr copyBytes;
              endif;
 
-             // Imposto a null i riferimenti non piu' utilizzabili.
-             // Non dealloco perche' gli oggetti a cui puntano sono ancora utilizzati.
+          
              for i = array.size downto array.size + positions + 1;
                entryPtr = getEntry(arrayPtr:i);
                entry.objectPtr = *null;
              endfor;
            when (positions > 0);
-             // Inserisco nuovi elementi all'interno dell'array.
+           
              exsr copyBytes;
 
-             // Imposto a null i riferimenti non piu' utilizzabili.
-             // Non dealloco perche' gli oggetti a cui puntano sono ancora utilizzati.
+           
              for i = startIndex to destinationIndex - 1;
                entryPtr = getEntry(arrayPtr:i);
                entry.objectPtr = *null;
@@ -574,18 +489,16 @@
            other;
          endsl;
 
-         //*********************************************************************
-         // copyBytes
-         //*********************************************************************
+     
          begsr copyBytes;
 
            bytesToCopy = ENTRY_SIZE * (array.size - startIndex + 1);
 
-           // Alloco uno spazio di memoria temporaneo per copiare gli elementi da spostare.
+     
            allocSpace(tempPtr:bytesToCopy);
            memcpy(tempPtr:getEntry(arrayPtr:startIndex):bytesToCopy);
 
-           // Copio l'area temporanea alla posizione desiderata.
+      
            memcpy(
               getEntry(arrayPtr:destinationIndex):
               tempPtr:
@@ -598,9 +511,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // ensureCapacity
-       //***********************************************************************
        dcl-proc ensureCapacity;
 
          dcl-pi *n;
@@ -627,9 +537,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // compareNumbers
-       //***********************************************************************
+     
        dcl-proc compareNumbers;
 
          dcl-pi *n int(10);
@@ -652,9 +560,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // compareString
-       //***********************************************************************
+ 
        dcl-proc compareStrings;
 
          dcl-pi *n int(10);
@@ -680,9 +586,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // getSortResult
-       //***********************************************************************
+
        dcl-proc getSortResult;
 
          dcl-pi *n int(3);
@@ -698,9 +602,6 @@
 
        end-proc;
 
-       //***********************************************************************
-       // rangeCheck
-       //***********************************************************************
        dcl-proc rangeCheck;
 
          dcl-pi *n;
@@ -720,9 +621,7 @@
 
        end-proc;
 
-       //***********************************************************************
-       // throwError
-       //***********************************************************************
+ 
        dcl-proc throwError;
 
          dcl-pi *n;
